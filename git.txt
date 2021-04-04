@@ -1,0 +1,8 @@
+git config - configura as informações do usuario, como nome de usuario e email (ver opções disponivei)
+git init - inicia um repositorio na pasta local
+git status - mostra o status dos arquivos, se tem algum pra adicionar ou para comitar
+git add - adiciona um arquivo ao git
+git commit - perdura as mudanas no arquivo gerando uma nova versão (utilizar a opção -m para colocar uma mensagem e a opção -am para adicionar o arquivo e colcoar uma mensagem do commit)
+git log - mostra o log de commits, mostrando a hash e o comentário feito no momento do commit(opção --author='' mostra os commits de uma única pessoa)
+git shortlog - mostra um log de quantidade de commits e nome dos commits de cada usuario
+git show - mostra o último commit e suas mudanças (pode ser usado passando uma hash de um commit especifico)
