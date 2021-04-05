@@ -6,3 +6,6 @@ git commit - perdura as mudanas no arquivo gerando uma nova versão (utilizar a 
 git log - mostra o log de commits, mostrando a hash e o comentário feito no momento do commit(opção --author='' mostra os commits de uma única pessoa)
 git shortlog - mostra um log de quantidade de commits e nome dos commits de cada usuario
 git show - mostra o último commit e suas mudanças (pode ser usado passando uma hash de um commit especifico)
+git diff - mostra as mudanças em um arquivo que não foi feito um commit (--name-only mostra somente o nome dos arquivos que foram modificados)
+git reset HEAD <file> - remove o arquvio de staged para modificado sem estar adicionado (antes de dar um git add)
+git reset <hash commit que deseja recuperar> - restaura o commit que você passar (--soft : coloca o arquivo em staged, com as mudanças feitas no commit apagado; --mixed : coloca o arquivo antes de staged, modificado mas não adicionado ao git; --hard : apaga todo o commit e deixa o arquivo como unmodified)
