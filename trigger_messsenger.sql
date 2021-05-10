@@ -3,6 +3,7 @@ ON messengers FOR EACH ROW
 EXECUTE PROCEDURE
 change_messenger_f();
 
+<<<<<<< HEAD
 Versão 1
 
 CREATE OR REPLACE FUNCTION change_messenger_f()
@@ -30,10 +31,14 @@ $$ LANGUAGE plpgsql;
 
 
 Versão 2
+=======
+
+>>>>>>> d91763132372ecfed48545836355d15f8be2d861
 
 CREATE OR REPLACE FUNCTION change_messenger_f()
 RETURNS trigger AS $$
 begin
+<<<<<<< HEAD
 	IF (EXISTS(select * from messengers as me where me.id = NEW.id and (me.audio_before_tts_id is not null or me.audio_tts is not null or me.audio_after_tts_id is not null))) THEN
  		update messengers set type = 'messenger' where id = NEW.id;
  	ELSEIF (EXISTS(select * from messengers as me where me.id = NEW.id and (me.audio_before_tts_id is null and me.audio_tts is null and me.audio_after_tts_id is null and me.destination is null))) THEN
@@ -50,3 +55,11 @@ begin
  	return NEW;
 END;
 $$ LANGUAGE plpgsql;
+=======
+    IF (EXISTS(select * from messengers as me where me.id = NEW.id and me.disable_contact_after_answer = 'true')) THEN
+        update messengers set disable_contact_after_answer = 'false' where id = NEW.id;
+    END IF;
+    return NEW;
+END;
+$$ LANGUAGE plpgsql;
+>>>>>>> d91763132372ecfed48545836355d15f8be2d861
