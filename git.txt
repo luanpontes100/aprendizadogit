@@ -10,3 +10,10 @@ git show - mostra o último commit e suas mudanças (pode ser usado passando uma
 git diff - mostra as mudanças em um arquivo que não foi feito um commit (--name-only mostra somente o nome dos arquivos que foram modificados)
 git reset HEAD <file> - remove o arquvio de staged para modificado sem estar adicionado (antes de dar um git add)
 git reset <hash commit que deseja recuperar> - restaura o commit que você passar (--soft : coloca o arquivo em staged, com as mudanças feitas no commit apagado; --mixed : coloca o arquivo antes de staged, modificado mas não adicionado ao git; --hard : apaga todo o commit e deixa o arquivo como unmodified)
+git push -u destino origem - Envia tudo do repositorio local pro repositorio remoto (-u serve pra salvar as informações, da próxima vez só precisa colocar git push)
+git clone <endereço do repósitorio> <nova pasta a ser criada> - clona o repósitorio remoto para uma pasta local
+git checkout -b <nome do branch a ser criado> - cria um novo branch
+git checkout <nome do branch> - muda o branch atual para o qual você quer ir
+git branch -D <nome da branch> - Exclui um branch
+git merge <branch a ser mergiada> - Junta o branch que você quiser ao master, gerando um novo commit que contém apenas os commits feitos nos dois branchs
+git stash - guarda as modificações feitas de forma oculta, não mostrando essas modificações para serem comitadas ou adicionadas
