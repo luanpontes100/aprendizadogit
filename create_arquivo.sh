@@ -7,24 +7,26 @@ read -p "Digite os caracteres que o arquivo será preenchido: " CHAR
 
 if [[ "$(find . -name $ARQ)" ]]; then
 	echo "ARQUIVO JÁ EXISTE, SERÁ LIMPADO PARA CONTINUAR O PROCESSO"
-	echo "" > $ARQ
+	#rm $ARQ
+	> $ARQ
 	echo "ARQUVIO ZERADO"
 fi	
 until [ $(stat --printf=%s $ARQ) -ge $SIZE ]; do
 	echo "$CHAR" >> $ARQ
 	ARQ_SIZE=$(stat --printf=%s $ARQ)
-	echo "ARQUIVO: $ARQ_SIZE"
-        echo "`expr \( $ARQ_SIZE \* 100 \) % $SIZE`"	
-	if [ $(expr \( $ARQ_SIZE \* 100 \) % $SIZE ) -eq 0 ]; then
+	#echo "ARQUIVO: $ARQ_SIZE"
+	RESTO=$(expr \( $ARQ_SIZE \* 100 \) % $SIZE)	
+	#echo "Resto = $RESTO"
+	if [ $RESTO -eq 0 ]; then
 		PORCENT=$(expr \( $ARQ_SIZE \* 100 \) \/ $SIZE)
-		echo "PORCENTAGEM É: $PORCENT"
-		echo
+	#	echo "PORCENTAGEM É: $PORCENT"
+	#	echo
 	else
 		continue
         fi	
 	if [ $(expr $PORCENT % 10) -eq 0 ]; then
 		echo 
-		echo "CONCLUÍDO: $PORCENT % - Tamanho do arquivo = $ARQ_SIZE"
+		echo "CONCLUÍDO: $PORCENT% - Tamanho do arquivo = $ARQ_SIZE"
 	fi
 done
 
