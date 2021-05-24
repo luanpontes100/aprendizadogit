@@ -1,0 +1,14 @@
+Modulo 01
+Aula 02
+
+- Ciclo cascata (Ou Waterfall)
+Modelo tradicional, lento, utilizado quando o mundo ainda era mais estático e não se tinha tanta rapidez como hoje, mas ainda é útil em projetos que são mais estaveis, como construção civil. 
+Negócio --> Desenvolvimento e QA --> Operação --> Clientes (Pode demorar anos para esse ciclo ser completo, pois mudanças podem e vão acontecer, tendo que voltar para o time de negócio avaliar ou de desenvolvilmento para corrigir)
+
+- Ciclo Ágil
+Modelo Ágil que juntou a área de negócios, desenvolvimento e testes, abrindo uma maior comunicação. Além disso, as funcionalidades são desenvolvidas baseadas em sprints, sendo de forma incremental, o que quer dizer que a função 1 é pensada, desenvolvida, testada, após isso a função 2 segue esse ciclo. Ainda há uma falta de comunicação e divergencias com o setor de operações
+Negócio, desenvolvimento e testes --> Operação --> Clientes 
+
+- Ciclo DevOps
+No ciclo DevOps, basicamente é tudo junto. Então todos os setores trabalham de forma integrada para garantir a implantaão agil de um projeto, retirando a separação do negócio, desenvolvimento e testes da operação. Como no ágil, há também os sprints, mas aqui já segue uma trajetoria até a implantaão, não somente até o teste, deixando tudo integrado. É necessário nessa prática o aprendizado e melhoria contínua, já que a entrega ao cliente é bem mais rápida- 
+-Lean é a base
