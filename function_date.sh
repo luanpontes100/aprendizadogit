@@ -52,6 +52,8 @@ function_b (){
 	echo "${VALOR1}/${VALOR2}/${VALOR3}"
 
 }
+
+
 function_f $1
 function_i $1
 function_b $1
