@@ -1,0 +1,22 @@
+#!/bin/bash
+####### SCRIPT PARA CRIAÇÃO E MANUTENÇÃO DO TUNEL SSH COM O PROXY, PARA ACESSO DO BTVENDAS #####
+### AUTOR: LUAN DE ALMEIDA ######
+####
+### PROCESSO A SER MONITORADO (O NOME DO PROCESSO É O MESMO DO COMANDO, MAS COMO VAMOS USAR A VARIAVEL COMANDO PARA EXECUTAR O COMANDO, PRECISAMOS DE OUTRA PARA PODER UTILIZAR NA VERIFICAÇÃO ###
+PROCESSO='ssh -f -N -T -R22221:localhost:22 -p22000 bv_proxy@proxy.iqnus.com'
+### INTERVALO DE VERIFICAÇÃO DO PROCESSO EM SEGUNDOS ###
+INTERVALO=10
+### LAÇO DE REPETIÇÃO PARA PODER VERIFICAR O PROCESSO ###
+while true
+do
+### ARMAZENA 1 SE O PROCESSO ESTIVER UP E 0 SE ESTIVER DOWN ###
+      OCORRENCIAS=$(ps ax | grep "$PROCESSO" | grep -v grep| wc -l)
+      if [ $OCORRENCIAS -eq 0 ]
+      then
+              ssh -f -N -T -R22221:localhost:22 -p22000 bv_proxy@proxy.iqnus.com
+      fi
+      sleep $INTERVALO
+done
+
+###FIM DO SCRIPT###
+
