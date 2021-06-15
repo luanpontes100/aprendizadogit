@@ -37,3 +37,15 @@ Receber o feedback rápido, utilizando métricas e os feedbacks dos clientes.
 
 -Terceira Maneira
 Diz respeito a ter confiança de errar e aprender continuamente.
+
+Módulo 2
+Aula 4:
+
+-Sem teste automatizado, quanto mais código mais tempo e dinheiro será necessário
+-testes no final do desenvolvimento tiram a oportunidade de aprendizado
+
+Pirâmide ideal de testes da base ao topo: Teste unitario, serviços, UI e testes manuais
+Pirâmide não ideal de testes da base ao topo: Testes manuais, UI, serviços e testes unitarios
+
+TDD: Test-Driven Development
+BDD: Behavior Driven Development
