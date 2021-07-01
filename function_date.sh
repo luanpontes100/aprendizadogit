@@ -34,14 +34,19 @@ function_i () {
 	 cut_date $1
 	if [ $VALOR1 -eq $VALOR2 -a $VALOR1 -le 12 -a $VALOR2 -le 12 ]; then
 		echo "${VALOR1}/${VALOR2}/${VALOR3}"
+		TIPO=1
  	elif [ $VALOR1 -le 12 -a $VALOR2 -le 12 ]; then
 		echo "Impossivel determinar data"
+		TIPO=0
 	elif [ $VALOR1 -le 31 -a $VALOR2 -le 12 ]; then
 		echo "${VALOR2}/${VALOR1}/${VALOR3}"
+		TIPO=1
 	elif [ $VALOR2 -le 31 -a $VALOR1 -le 12 ]; then
 		echo "${VALOR1}/${VALOR2}/${VALOR3}"
+		TIPO=2
 	else
 		echo "Data Inválida"
+		TIPO=3
 	fi	
 
 }
@@ -54,6 +59,40 @@ function_b (){
 }
 
 
+function_e (){
+
+	LIXO=$(function_i $1)
+	case $TIPO in
+		0)
+		   	echo "Impossível determinar o padrão de data."
+	 	   	echo "1 - BR (DD/MM/AAAA)"
+		   	echo "2 - US (MM/DD/AAAA)"
+		   	read -p "Informe o formato(1 ou 2): " TIPO
+		   	if [ $TIPO -eq 1 ]; then
+				echo "$VALOR1 de `date --date="$VALOR2/01/2021" +%B` de $VALOR3"
+		   	else
+				echo "$VALOR2 de `date --date="$VALOR1/01/2021" +%B` de $VALOR3"
+	  	   	fi
+			;;
+		
+		1)
+			echo "$VALOR1 de `date --date="$VALOR2/01/2021" +%B` de $VALOR3"
+			;;
+		
+		2)
+			echo "$VALOR2 de `date --date="$VALOR1/01/2021" +%B` de $VALOR3"
+			;;
+		
+		3)
+			echo "Data inválida"
+	
+	esac
+
+}
+
+
+
 function_f $1
 function_i $1
 function_b $1
+function_e $1
