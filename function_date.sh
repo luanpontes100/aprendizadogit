@@ -61,7 +61,7 @@ function_b (){
 
 function_e (){
 
-	LIXO=$(function_i $1)
+	function_i $1 > /dev/null
 	case $TIPO in
 		0)
 		   	echo "Impossível determinar o padrão de data."
@@ -89,6 +89,8 @@ function_e (){
 	esac
 
 }
+
+
 if [ $# -le 1 ]; then
 	echo "número insuficiente de parametros"
 	echo "Uso: [Opções] [DATA]"
