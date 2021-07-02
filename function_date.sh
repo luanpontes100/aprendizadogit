@@ -89,10 +89,51 @@ function_e (){
 	esac
 
 }
+if [ $# -le 1 ]; then
+	echo "número insuficiente de parametros"
+	echo "Uso: [Opções] [DATA]"
+        echo -e "DATA nos formatos DDMMYYYY ou MMDDYYYY, com ou sem /\nOpções:"
+        echo "-f,--format = Retorna 0 para BR, 1 para US e 2 quando impossível determinar, 3 Inválido"
+        echo "-i,--inverter = Inverte formato BR para US e US para BR. Inclui as Barras"
+        echo "-b,--barras = Inclui Barras de Data. Exemplo: de 13081981 para 13/08/1981"
+        echo "-e,--extenso = Exibe a data em formato extenso. Exemplo de 13081918 para 13 de Agosto de 1981"
+else
+	OPTION="$1"
+	case $OPTION in
+
+		-e|--extenso) 
+			function_e $2
+			;;
+		-f|--formato)
+			function_f $2
+			;;
+		-i|--inverter)
+			function_i $2
+			;;
+		-b|--barras)
+			function_b $2
+			;;
+		-h|--help)
+			echo "Uso: [Opções] [DATA]"
+			echo -e "DATA nos formatos DDMMYYYY ou MMDDYYYY, com ou sem /\nOpções:"
+			echo "-f,--format = Retorna 0 para BR, 1 para US e 2 quando impossível determinar, 3 Inválido"
+			echo "-i,--inverter = Inverte formato BR para US e US para BR. Inclui as Barras"
+			echo "-b,--barras = Inclui Barras de Data. Exemplo: de 13081981 para 13/08/1981"
+			echo "-e,--extenso = Exibe a data em formato extenso. Exemplo de 13081918 para 13 de Agosto de 1981"
+			;;
+		*)
+			echo "Opção inválida"
+			echo -e "DATA nos formatos DDMMYYYY ou MMDDYYYY, com ou sem /\nOpções:"
+                	echo "-f = Retorna 0 para BR, 1 para US e 2 quando impossível determinar, 3 Inválido"
+                	echo "-i = Inverte formato BR para US e US para BR. Inclui as Barras"
+                	echo "-b = Inclui Barras de Data. Exemplo: de 13081981 para 13/08/1981"
+                	echo "-e = Exibe a data em formato extenso. Exemplo de 13081918 para 13 de Agosto de 1981"
+	esac
+fi	
 
 
 
-function_f $1
-function_i $1
-function_b $1
-function_e $1
+#function_f $2
+#function_i $2
+#function_b $2
+#function_e $2
