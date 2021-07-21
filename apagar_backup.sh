@@ -2,7 +2,8 @@
 ################## LIMPAR BACKUP ###############
 #### SCRIPT PARA LIMPAR OS BACKUPS ANTIGOS E DEIXAR SOMENTE UM POR MÊS ##########
 cd /mnt/iqnus
-for i in $(ls); do
-	cd $i;
-	find /home/backups -mtime +2 -exec rm -r {} \;
+for FOLDER in $(ls); do
+	cd $FOLDER
+	find . -newermt "2021-06-01" ! -newermt "2021-07-01" -exec stat -t "%s" -f "%N/%Sm" {} \;
+	
 
