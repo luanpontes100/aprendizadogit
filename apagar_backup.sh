@@ -34,7 +34,7 @@ for FOLDER in $(ls | egrep "gitlab|zabbix"); do
 					fi
 				done
 				echo -e "ARRAY da data $DATE na pasta $FOLDER: \n ${EXCLUSAO[@]} \n FIM da data $DATE \n"
-                echo -e "ARQUIVO MAIS VELHO da data $DATE: $ARQUIVO \n TEMPO MAIS VELHO: $TEMPO \n"
+            	echo -e "ARQUIVO MAIS VELHO da data $DATE: $ARQUIVO \n TEMPO MAIS VELHO: $TEMPO \n"
 				## limpa o array e zera a posição e o tempo para a próxima data
 				unset EXCLUSAO
 				POSICAO=0
