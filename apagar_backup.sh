@@ -34,12 +34,13 @@ for FOLDER in gitlab zabbix; do
 						TEMPO=$(echo $FILE | cut -d\/ -f 3) 
 						ARQUIVO=$(echo $FILE | cut -d\/ -f 2)
 					else
+						echo "$(function_hora) Arquivo $FILE sendo inserido no array, mais velho que $ARQUIVO"
 						EXCLUSAO[$POSICAO]=$(echo $FILE | cut -d\/ -f 2)
 						POSICAO=$(expr $POSICAO + 1)
 					fi
 				done
-				echo -e "ARRAY da data $DATE na pasta $FOLDER: \n ${EXCLUSAO[@]} \n FIM da data $DATE \n"
-            	echo -e "ARQUIVO MAIS VELHO da data $DATE: $ARQUIVO \n TEMPO MAIS VELHO: $TEMPO \n"
+				echo -e "$(function_hora) ARRAY da data $DATE na pasta $FOLDER: \n $(echo ${EXCLUSAO[@]} | tr ' ' '\n') \n FIM da data $DATE \n"
+            	echo -e "$(function_hora) ARQUIVO MAIS VELHO da data $DATE: $ARQUIVO \n TEMPO MAIS VELHO: $TEMPO \n"
 				## limpa o array e zera a posição e o tempo para a próxima data
 				unset EXCLUSAO
 				POSICAO=0
