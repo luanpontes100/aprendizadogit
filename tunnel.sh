@@ -3,7 +3,8 @@
 ### AUTOR: LUAN DE ALMEIDA ######
 ####
 ### PROCESSO A SER MONITORADO (O NOME DO PROCESSO É O MESMO DO COMANDO, MAS COMO VAMOS USAR A VARIAVEL COMANDO PARA EXECUTAR O COMANDO, PRECISAMOS DE OUTRA PARA PODER UTILIZAR NA VERIFICAÇÃO ###
-PROCESSO='ssh -f -N -T -R22221:localhost:22 -p22000 bv_proxy@proxy.iqnus.com'
+PORT=
+PROCESSO="ssh -f -N -T -R${PORT}:localhost:22 -p22000 bv_proxy@proxy.iqnus.com"
 ### INTERVALO DE VERIFICAÇÃO DO PROCESSO EM SEGUNDOS ###
 INTERVALO=10
 ### LAÇO DE REPETIÇÃO PARA PODER VERIFICAR O PROCESSO ###
@@ -13,7 +14,8 @@ do
       OCORRENCIAS=$(ps ax | grep "$PROCESSO" | grep -v grep| wc -l)
       if [ $OCORRENCIAS -eq 0 ]
       then
-              ssh -f -N -T -R22221:localhost:22 -p22000 bv_proxy@proxy.iqnus.com
+	      echo $(${PROCESSO}) > /dev/null 2>&1
+              #ssh -f -N -T -R22221:localhost:22 -p22000 bv_proxy@proxy.iqnus.com
       fi
       sleep $INTERVALO
 done
