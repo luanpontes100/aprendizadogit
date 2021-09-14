@@ -1,0 +1,37 @@
+-i = inventario (pode ser substituido por um ip caso seja somente um host)
+-u = especifica usuario, caso não tenha irá usar o padrão que fica no ansible.cfg
+-k = solicita senha para o ssh
+-K = solicita senha de elevação de privilegio
+-b = eleva o privilegio (configurar usuario no ansible.cfg)
+-v = verbose, pode ser -vv ou -vvv
+-m = modulo que será utilizado
+-a = argumentos do modulo (exemplo: -m shell -a "ping 8.8.8.8")
+
+Estrutura roles (Não é necessário ter todos os diretótios, sempre precisa de um arquivo chamado main.yml)
+playbook.yml
+roles/
+	common(nome da role, pode ser qualquer nome)/ 
+		tasks/ (Lista de tarefas principais a serem executadas)
+		handlers/ (Manipuladores de eventos disparados pelas tasks, funciona como uma trigger. Por exemplo: posso chamar um handler para reiniciar um serviço após sua instalação por meio da tag "notify:" )
+		files/ (Arquivos utilizados para deploy dentro de uma role)
+		templates/ (Modelo para deploy dentro de uma role, usando váriaveis do ansible, basta verificar o que retorna quando roda o modulo setup)
+		vars/ (Váriaveis adicionais de um role, mais por organização, pelo menos o que entendi até agora)
+		defaults/ (Váriaveis padrão de uma role, tem a prioridade máxima. é o primeiro diretório a ser lido para váriaveis)
+		meta/ (Trata dependências de uma role por outra role - primeiro a ser analisado. Por exemplo: para instalar algum pacote verificar antes se há o pacote apt-https-transport, minha role principal só será iniciada após a instalação desse outro pacote)
+
+Váriaveis(Ordem)
+1. role/defaults/main.yml
+2. inventory file
+3. host_vars/hostname (variaveis e valores separadas por : e não = )
+4. group_vars/gruponame (variaveis e valores separadas por : e não = )
+5. roles/vars/main.yml
+
+Playbooks
+ansible-playbook -i {{arquivo de hosts}} {{playbook a ser rodado}} [OPÇÕES]
+--syntax-check = verifica se tem algum erro de sintaxe no playbook
+-l = define o usuário ou grupo que será rodado o playbook
+--check = Roda a playbook de forma que nenhuma alteração seja feita, apenas para saber se irá rodar sem nenhum problema
+-f = número de processos que irão rodar ao mesmo tempo (se eu tenho 10 hosts e defino -f 2, irá rodar de 2 em 2 hosts)
+
+Váriavel playbook (para itens)
+name: [u'item1',u'item2',...,u'itemN']

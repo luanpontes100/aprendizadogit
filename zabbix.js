@@ -1,7 +1,6 @@
 var Ami = {
     params: {
-        url: '{$AMI.URL}',
-        trunk: '{$AMI.TRUNK_REGEXP}'
+        url: '{$AMI.URL}'
     },
     api_request: new HttpRequest(),
 
@@ -53,7 +52,6 @@ var Ami = {
 var asterisk = {
         users: [],
         total: 0
-    }
 };
 
 function block2Object(text) {
